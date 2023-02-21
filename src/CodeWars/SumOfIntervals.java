@@ -64,9 +64,9 @@ public class SumOfIntervals {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(sumIntervals1(intervals));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(sumIntervals1(intervals));
+//    }
 
 
     public static int sumIntervals1(int[][] intervals) {
