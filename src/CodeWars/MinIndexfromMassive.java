@@ -14,7 +14,7 @@ public class MinIndexfromMassive {
     public static int findSmallestInt3(int[] args) {
         int smallest = Integer.MAX_VALUE;
         for (int i : args)
-            smallest = (smallest > i) ? i : smallest;//Оператор возвращает значение выражения1, если условие ? верно, и значение выражения2 в противном случае.
+            smallest = Math.min(smallest, i);
         return smallest;
     }
     public static int findSmallestInt4(int[] args) {
