@@ -1,6 +1,24 @@
 package Yandex.contest;
 
 import java.util.*;
+/*
+Прример ввода:
+1.
+Ввод
+3 5 2
+5 10 6
+Вывод:
+2
+1 3
+2.
+Ввод
+5 19 32
+36 10 72 4 50
+Вывод
+2
+2 4
+ */
+
 
 public class IceSculpture {
     public static void main(String[] args) {

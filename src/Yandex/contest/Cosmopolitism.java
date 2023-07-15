@@ -5,6 +5,24 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/*
+Пример ввода:
+2
+10 9
+1 0
+0 1
+5
+0 0 11 10 9
+0 1 0 1 1
+2 1 0 0 0
+Пример вывода:
+2 0 2 1 2
+ */
+/*
+Замечания: асимптотика O(QN), а для решения ожидается решение за O(NlogN + QlogN) или что-то аналогичное
+Изучить темы "двоичный поиск" или "два указателя"
+ */
+
 public class Cosmopolitism {
 
     public static void main(String[] args) {
@@ -49,17 +67,10 @@ public class Cosmopolitism {
             Person person = people[i];
             for (int j = 0; j < countries.length; j++) {
                 Country country =countries[j];
-                if (person.getIncome() == 0 && !person.isHasEducation()) {
-                    if (country.getMinIncome() == 0 && !country.isEducRequired()||country.isCanFamily()&&person.getParentsCitizenship()==country.getName()) {
-                        countryList.add(country.getName());
-                        flag=true;
-                        break;
-                    }
-                } else if ((person.getIncome() >= country.getMinIncome()) && (person.isHasEducation() || !country.isEducRequired())
+                if ((person.getIncome() >= country.getMinIncome()) && (person.isHasEducation() || !country.isEducRequired())
                         || (country.isCanFamily()&& person.getParentsCitizenship() == country.getName())) {
                     countryList.add(country.getName());
                     flag=true;
-
                     break;
                 } else if(j==countries.length-1&&!flag){
                     countryList.add(0);
