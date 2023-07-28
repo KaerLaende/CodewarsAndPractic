@@ -65,16 +65,24 @@ public class Cosmopolitism {
         for (int i = 0; i < people.length; i++) {
             boolean flag=false;
             Person person = people[i];
-            for (int j = 0; j < countries.length; j++) {
-                Country country =countries[j];
-                if ((person.getIncome() >= country.getMinIncome()) && (person.isHasEducation() || !country.isEducRequired())
+            int left = 0;
+            int right = countries.length - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                Country country = countries[mid];
+                if ((person.getIncome() >= country.getMinIncome()) && (person.isHasEducation() ||!country.isEducRequired())
                         || (country.isCanFamily()&& person.getParentsCitizenship() == country.getName())) {
                     countryList.add(country.getName());
                     flag=true;
                     break;
-                } else if(j==countries.length-1&&!flag){
-                    countryList.add(0);
+                } else if (person.getIncome() < country.getMinIncome()) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
                 }
+            }
+            if(!flag){
+                countryList.add(0);
             }
         }
 
