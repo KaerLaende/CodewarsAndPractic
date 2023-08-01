@@ -39,6 +39,8 @@ public class Palindrome {
     }
 
     public static void main(String[] args) {
+        double i= 32/1235;
+        System.out.println(i);
         System.out.println(isPalindrome(".,"));
     }
 }
