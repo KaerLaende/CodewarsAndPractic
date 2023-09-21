@@ -11,9 +11,9 @@ import java.util.Scanner;
  * В первые t минут передать договор тому коллеге, который планирует уйти.
  * Пройти минимальное количество лестничных пролетов.
  * Помогите Кате выполнить все пункты ее плана.
- *
+ * <p>
  * Формат выходных данных
- *
+ * <p>
  * Выведите одно число — минимально возможное число лестничных пролетов, которое понадобится пройти Кате.
  */
 /*
@@ -26,9 +26,9 @@ import java.util.Scanner;
 
 Пример 2
 ВВОД:
-6  4
-1  2  3  6  8  25
-5
+6  5
+1  20  22  30  35  40
+2
 ВЫВОД - 31
  */
 public class KateInFloor {
@@ -50,18 +50,14 @@ public class KateInFloor {
         int step = 0;
         int start = 0;
         int highestFloor = floors[floors.length - 1];
-        int totalDist =highestFloor - floors[0];
+        int totalDist = highestFloor - floors[0];
         if (timeToLeave < leaversFloor - floors[0] //Если не успевает пройти попорядку и успеть застать того кто уходит
                 && timeToLeave < highestFloor - leaversFloor) { //и не успевает в обратном порядке с конца
-            	start = leaversFloor; // тогда начинаем путь с этажа уходящего сотрудника
-                if (start <= totalDist / 2) {
-                    step = (start - floors[0]) + (totalDist);
-                } else {
-                    step = (highestFloor - start) + totalDist;
-                }
-            } else {//иначе идём по порядку начиная путь с 1го или последнего этажа
+            start = leaversFloor; // тогда начинаем путь с этажа уходящего сотрудника
+            step = Math.min((start - floors[0]) + (totalDist), (highestFloor - start) + totalDist);
+        } else {//иначе идём по порядку начиная путь с 1го или последнего этажа
             step = totalDist;
-            }
+        }
         return step;
     }
 }

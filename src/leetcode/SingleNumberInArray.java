@@ -1,5 +1,6 @@
 package leetcode;
 
+import javax.sql.rowset.Predicate;
 import java.util.Arrays;
 
 /**
